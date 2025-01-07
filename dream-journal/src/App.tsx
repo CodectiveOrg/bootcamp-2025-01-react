@@ -3,8 +3,6 @@ import Header from "./components/Header/Header.tsx";
 import ItemsList from "./components/ItemsList/ItemsList.tsx";
 import Toolbar from "./components/Toolbar/Toolbar.tsx";
 
-import "./App.css";
-
 function App() {
   return (
     <div className="app">
