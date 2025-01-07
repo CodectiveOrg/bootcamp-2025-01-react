@@ -1,34 +1,19 @@
-import MingcuteSearchLine from "./icons/MingcuteSearchLine.tsx";
-import MingcuteMoonStarsLine from "./icons/MingcuteMoonStarsLine.tsx";
+import Footer from "./components/Footer/Footer.tsx";
+import Header from "./components/Header/Header.tsx";
+import ItemsList from "./components/ItemsList/ItemsList.tsx";
+import Toolbar from "./components/Toolbar/Toolbar.tsx";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
-      <header>
-        <h1>Dream Journal</h1>
-      </header>
+      <Header />
       <main>
-        <div className="toolbar">
-          <div className="search-box">
-            <input type="text" />
-            <MingcuteSearchLine className="icon" />
-          </div>
-          <select>
-            <option value="">All</option>
-            <option value="">Filter 1</option>
-            <option value="">Filter 2</option>
-          </select>
-          <button className="theme">
-            <MingcuteMoonStarsLine />
-          </button>
-        </div>
-        <ul className="items"></ul>
+        <Toolbar />
+        <ItemsList />
       </main>
-      <footer>
-        <button className="add">+</button>
-      </footer>
+      <Footer />
     </div>
   );
 }
