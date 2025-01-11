@@ -2,9 +2,14 @@
   --color-surface: hsl(0, 0%, 97%);
   --color-text: hsl(0, 0%, 15%);
 
+  --color-fade: hsl(0, 0%, 80%);
+
   --color-primary: hsl(243, 100%, 69%);
   --color-primary-text: hsl(0, 0%, 97%);
+  --color-primary-border: hsl(243, 100%, 69%, 50%);
   --color-primary-outline: hsl(243, 100%, 69%, 40%);
+
+  --color-danger: hsl(0, 100%, 45%);
 }
 
 *,
@@ -17,6 +22,9 @@
 }
 
 html {
+  accent-color: var(--color-primary);
+  caret-color: var(--color-primary);
+
   font-family: "Kanit", system-ui;
 }
 
