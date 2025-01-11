@@ -11,7 +11,7 @@ function Toolbar() {
     <div className={styles.toolbar}>
       <SearchBox />
       <ItemTypeFilter />
-      <Button className="theme">
+      <Button sameWidthHeight className={styles.theme}>
         <MingcuteMoonStarsLine />
       </Button>
     </div>
