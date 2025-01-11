@@ -4,10 +4,12 @@ import clsx from "clsx";
 
 import styles from "./Button.module.css";
 
+type variant = "solid" | "outlined";
 type Shape = "rectangle" | "circle";
-type Size = "small" | "large";
+type Size = "small" | "medium" | "large";
 
 type Props = ComponentProps<"button"> & {
+  variant?: variant;
   shape?: Shape;
   size?: Size;
   sameWidthHeight?: boolean;
@@ -16,8 +18,9 @@ type Props = ComponentProps<"button"> & {
 function Button({
   children,
   className,
+  variant = "solid",
   shape = "rectangle",
-  size = "small",
+  size = "medium",
   sameWidthHeight = false,
   ...otherProps
 }: Props) {
@@ -25,6 +28,7 @@ function Button({
     <button
       className={clsx(
         styles.button,
+        styles[variant],
         styles[shape],
         styles[size],
         sameWidthHeight && styles["same-width-height"],

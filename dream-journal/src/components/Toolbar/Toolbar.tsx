@@ -1,7 +1,8 @@
 import Button from "../Button/Button.tsx";
 import ItemTypeFilter from "../ItemTypeFilter/ItemTypeFilter.tsx";
-import SearchBox from "../SearchBox/SearchBox.tsx";
+import Input from "../Input/Input.tsx";
 
+import MingcuteSearchLine from "../../icons/MingcuteSearchLine.tsx";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine.tsx";
 
 import styles from "./Toolbar.module.css";
@@ -9,7 +10,7 @@ import styles from "./Toolbar.module.css";
 function Toolbar() {
   return (
     <div className={styles.toolbar}>
-      <SearchBox />
+      <Input placeholder="Search note..." suffixIcon={<MingcuteSearchLine />} />
       <ItemTypeFilter />
       <Button sameWidthHeight className={styles.theme}>
         <MingcuteMoonStarsLine />

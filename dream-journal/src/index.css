@@ -2,6 +2,7 @@
   --color-surface: hsl(0, 0%, 97%);
   --color-text: hsl(0, 0%, 15%);
 
+  --color-backdrop: hsl(0, 0%, 15%, 70%);
   --color-fade: hsl(0, 0%, 80%);
 
   --color-primary: hsl(243, 100%, 69%);
