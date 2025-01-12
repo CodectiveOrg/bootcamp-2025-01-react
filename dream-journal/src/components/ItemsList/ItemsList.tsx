@@ -1,18 +1,22 @@
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
+import { Dream } from "../../types/dream.ts";
+
 import styles from "./ItemsList.module.css";
 
-const items = ["Note #1", "Note #2", "Note #3"];
+type Props = {
+  dreams: Dream[];
+};
 
-function ItemsList() {
+function ItemsList({ dreams }: Props) {
   return (
     <ul className={styles.items}>
-      {items.map((item) => (
-        <li key={item}>
+      {dreams.map((dream) => (
+        <li key={dream.id}>
           <label>
             <input type="checkbox" />
-            <div className={styles.title}>{item}</div>
+            <div className={styles.title}>{dream.title}</div>
           </label>
           <div className={styles.actions}>
             <button className={styles.edit}>
