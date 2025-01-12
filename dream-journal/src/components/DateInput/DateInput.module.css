@@ -1,4 +1,4 @@
-.input {
+.date-input {
   overflow: hidden;
 
   display: flex;
@@ -23,12 +23,6 @@
     &:focus {
       outline: none;
     }
-  }
-
-  svg {
-    color: var(--color-primary);
-
-    font-size: 1.375rem;
   }
 
   &:focus-within {

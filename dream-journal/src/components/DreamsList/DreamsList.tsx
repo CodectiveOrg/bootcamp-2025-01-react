@@ -3,21 +3,19 @@ import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
 import { Dream } from "../../types/dream.ts";
 
-import styles from "./ItemsList.module.css";
+import styles from "./DreamsList.module.css";
 
 type Props = {
   dreams: Dream[];
 };
 
-function ItemsList({ dreams }: Props) {
+function DreamsList({ dreams }: Props) {
   return (
     <ul className={styles.items}>
       {dreams.map((dream) => (
         <li key={dream.id}>
-          <label>
-            <input type="checkbox" />
-            <div className={styles.title}>{dream.title}</div>
-          </label>
+          <div className={styles.date}>{dream.date.toLocaleDateString()}</div>
+          <div className={styles.title}>{dream.title}</div>
           <div className={styles.actions}>
             <button className={styles.edit}>
               <MingcuteEdit2Line />
@@ -32,4 +30,4 @@ function ItemsList({ dreams }: Props) {
   );
 }
 
-export default ItemsList;
+export default DreamsList;

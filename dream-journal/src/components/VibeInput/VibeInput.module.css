@@ -1,4 +1,4 @@
-.input {
+.vibe-input {
   overflow: hidden;
 
   display: flex;
@@ -14,21 +14,11 @@
 
     color: var(--color-primary);
 
-    block-size: 1em;
-
     border: none;
-
-    line-height: 1;
 
     &:focus {
       outline: none;
     }
-  }
-
-  svg {
-    color: var(--color-primary);
-
-    font-size: 1.375rem;
   }
 
   &:focus-within {
