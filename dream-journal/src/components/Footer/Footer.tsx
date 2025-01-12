@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
 
 import { Dream } from "../../types/dream.ts";
@@ -34,7 +36,7 @@ function Footer({ onApply }: Props) {
     }
 
     const dream: Dream = {
-      id: "",
+      id: uuidv4(),
       title,
       content: "",
       date: new Date(),
