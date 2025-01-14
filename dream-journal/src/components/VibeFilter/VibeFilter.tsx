@@ -1,14 +1,12 @@
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, useContext } from "react";
 
-import { Filters } from "../../types/filters.ts";
+import { FiltersContext } from "../../providers/FiltersProvider.tsx";
+
 import { Vibe } from "../../types/vibe.ts";
 
-type Props = {
-  filters: Filters;
-  setFilters: Dispatch<SetStateAction<Filters>>;
-};
+function VibeFilter() {
+  const { filters, setFilters } = useContext(FiltersContext);
 
-function VibeFilter({ filters, setFilters }: Props) {
   const changeHandler = (e: ChangeEvent<HTMLSelectElement>): void => {
     const vibe = e.target.value;
 

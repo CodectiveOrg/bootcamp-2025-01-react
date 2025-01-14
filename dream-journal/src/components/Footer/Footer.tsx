@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
+
+import { DreamsContext } from "../../providers/DreamsProvider.tsx";
 
 import { Dream } from "../../types/dream.ts";
 import { Vibe } from "../../types/vibe.ts";
@@ -15,11 +17,9 @@ import VibeInput from "../VibeInput/VibeInput.tsx";
 
 import styles from "./Footer.module.css";
 
-type Props = {
-  onApply: (dream: Dream) => void;
-};
+function Footer() {
+  const { createDream } = useContext(DreamsContext);
 
-function Footer({ onApply }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -68,7 +68,7 @@ function Footer({ onApply }: Props) {
       vibe,
     };
 
-    onApply(dream);
+    createDream(dream);
 
     dialogRef.current?.close();
   };

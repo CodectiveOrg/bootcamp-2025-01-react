@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext } from "react";
+import { useContext } from "react";
 
 import Button from "../Button/Button.tsx";
 import VibeFilter from "../VibeFilter/VibeFilter.tsx";
@@ -10,16 +10,9 @@ import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 
 import { ThemeContext } from "../../providers/ThemeProvider.tsx";
 
-import { Filters } from "../../types/filters.ts";
-
 import styles from "./Toolbar.module.css";
 
-type Props = {
-  filters: Filters;
-  setFilters: Dispatch<SetStateAction<Filters>>;
-};
-
-function Toolbar({ filters, setFilters }: Props) {
+function Toolbar() {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleThemeButtonClickHandler = (): void => {
@@ -34,7 +27,7 @@ function Toolbar({ filters, setFilters }: Props) {
         placeholder="Search dream..."
         suffixIcon={<MingcuteSearchLine />}
       />
-      <VibeFilter filters={filters} setFilters={setFilters} />
+      <VibeFilter />
       <Button
         sameWidthHeight
         className={styles.theme}
