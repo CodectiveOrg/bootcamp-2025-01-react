@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 
 import Button from "../Button/Button.tsx";
-import ItemTypeFilter from "../ItemTypeFilter/ItemTypeFilter.tsx";
+import VibeFilter from "../VibeFilter/VibeFilter.tsx";
 import Input from "../Input/Input.tsx";
 
 import MingcuteSearchLine from "../../icons/MingcuteSearchLine.tsx";
@@ -10,9 +10,16 @@ import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 
 import { ThemeContext } from "../../providers/ThemeProvider.tsx";
 
+import { Filters } from "../../types/filters.ts";
+
 import styles from "./Toolbar.module.css";
 
-function Toolbar() {
+type Props = {
+  filters: Filters;
+  setFilters: Dispatch<SetStateAction<Filters>>;
+};
+
+function Toolbar({ filters, setFilters }: Props) {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleThemeButtonClickHandler = (): void => {
@@ -23,8 +30,11 @@ function Toolbar() {
 
   return (
     <div className={styles.toolbar}>
-      <Input placeholder="Search note..." suffixIcon={<MingcuteSearchLine />} />
-      <ItemTypeFilter />
+      <Input
+        placeholder="Search dream..."
+        suffixIcon={<MingcuteSearchLine />}
+      />
+      <VibeFilter filters={filters} setFilters={setFilters} />
       <Button
         sameWidthHeight
         className={styles.theme}

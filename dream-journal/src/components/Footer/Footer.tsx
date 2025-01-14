@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
 
 import { Dream } from "../../types/dream.ts";
+import { Vibe } from "../../types/vibe.ts";
 
 import Button from "../Button/Button.tsx";
 import DateInput from "../DateInput/DateInput.tsx";
@@ -37,7 +38,7 @@ function Footer({ onApply }: Props) {
     const title = titleRef.current?.value;
     const content = contentRef.current?.value;
     const date = dateRef.current?.value;
-    const vibe = vibeRef.current?.value as "good" | "bad";
+    const vibe = vibeRef.current?.value as Vibe;
 
     if (!title) {
       console.error("Title is required.");
@@ -84,7 +85,7 @@ function Footer({ onApply }: Props) {
       </Button>
       <dialog ref={dialogRef}>
         <div className={styles.content}>
-          <div className={styles.title}>New Note</div>
+          <div className={styles.title}>New Dream</div>
           <Input ref={titleRef} placeholder="Input your title..." />
           <TextArea ref={contentRef} placeholder="Input your content..." />
           <DateInput ref={dateRef} />
