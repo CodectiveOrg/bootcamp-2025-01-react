@@ -22,10 +22,20 @@ export const ThemeContext = createContext<ThemeContextValue>({
 type Props = PropsWithChildren;
 
 function ThemeProvider({ children }: Props) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    const item = localStorage.getItem("theme");
+
+    if (!item) {
+      return "light";
+    }
+
+    return item as Theme;
+  });
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
+
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (
