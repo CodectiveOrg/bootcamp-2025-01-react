@@ -6,8 +6,11 @@ import DreamsList from "./components/DreamsList/DreamsList.tsx";
 import Toolbar from "./components/Toolbar/Toolbar.tsx";
 
 import { Dream } from "./types/dream.ts";
+import { Theme } from "./types/theme.ts";
 
 function App() {
+  const [theme, setTheme] = useState<Theme>("light");
+
   const [dreams, setDreams] = useState<Dream[]>(() => {
     const item = localStorage.getItem("dreams");
 
@@ -24,6 +27,10 @@ function App() {
   };
 
   useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
     localStorage.setItem("dreams", JSON.stringify(dreams));
   }, [dreams]);
 
@@ -31,7 +38,7 @@ function App() {
     <div className="app">
       <Header />
       <main>
-        <Toolbar />
+        <Toolbar theme={theme} setTheme={setTheme} />
         <DreamsList dreams={dreams} />
       </main>
       <Footer onApply={applyHandler} />
