@@ -1,32 +1,15 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import Footer from "./components/Footer/Footer.tsx";
 import Header from "./components/Header/Header.tsx";
 import DreamsList from "./components/DreamsList/DreamsList.tsx";
 import Toolbar from "./components/Toolbar/Toolbar.tsx";
 
+import ThemeProvider from "./providers/ThemeProvider.tsx";
+
 import { Dream } from "./types/dream.ts";
-import { Theme } from "./types/theme.ts";
-
-type ThemeContextValue = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
-
-export const ThemeContext = createContext<ThemeContextValue>({
-  theme: "light",
-  setTheme: () => {},
-});
 
 function App() {
-  const [theme, setTheme] = useState<Theme>("light");
-
   const [dreams, setDreams] = useState<Dream[]>(() => {
     const item = localStorage.getItem("dreams");
 
@@ -43,15 +26,11 @@ function App() {
   };
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
-
-  useEffect(() => {
     localStorage.setItem("dreams", JSON.stringify(dreams));
   }, [dreams]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeProvider>
       <div className="app">
         <Header />
         <main>
@@ -60,7 +39,7 @@ function App() {
         </main>
         <Footer onApply={applyHandler} />
       </div>
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 }
 

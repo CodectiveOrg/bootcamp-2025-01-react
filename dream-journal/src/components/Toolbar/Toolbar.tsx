@@ -8,7 +8,7 @@ import MingcuteSearchLine from "../../icons/MingcuteSearchLine.tsx";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine.tsx";
 import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 
-import { ThemeContext } from "../../App.tsx";
+import { ThemeContext } from "../../providers/ThemeProvider.tsx";
 
 import styles from "./Toolbar.module.css";
 
