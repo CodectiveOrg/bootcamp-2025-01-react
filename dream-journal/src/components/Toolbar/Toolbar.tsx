@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
 
 import Button from "../Button/Button.tsx";
 import ItemTypeFilter from "../ItemTypeFilter/ItemTypeFilter.tsx";
@@ -8,16 +8,13 @@ import MingcuteSearchLine from "../../icons/MingcuteSearchLine.tsx";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine.tsx";
 import MingcuteSunLine from "../../icons/MingcuteSunLine.tsx";
 
-import { Theme } from "../../types/theme.ts";
+import { ThemeContext } from "../../App.tsx";
 
 import styles from "./Toolbar.module.css";
 
-type Props = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
+function Toolbar() {
+  const { theme, setTheme } = useContext(ThemeContext);
 
-function Toolbar({ theme, setTheme }: Props) {
   const toggleThemeButtonClickHandler = (): void => {
     setTheme((currentTheme) => {
       return currentTheme === "light" ? "dark" : "light";
