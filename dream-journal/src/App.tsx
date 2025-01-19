@@ -7,6 +7,7 @@ import ThemeProvider from "./providers/ThemeProvider.tsx";
 import DreamsProvider from "./providers/DreamsProvider.tsx";
 import FiltersProvider from "./providers/FiltersProvider.tsx";
 import ModalProvider from "./providers/ModalProvider.tsx";
+import ToastProvider from "./providers/ToastProvider.tsx";
 
 function App() {
   return (
@@ -14,14 +15,16 @@ function App() {
       <DreamsProvider>
         <FiltersProvider>
           <ModalProvider>
-            <div className="app">
-              <Header />
-              <main>
-                <Toolbar />
-                <DreamsList />
-              </main>
-              <Footer />
-            </div>
+            <ToastProvider>
+              <div className="app">
+                <Header />
+                <main>
+                  <Toolbar />
+                  <DreamsList />
+                </main>
+                <Footer />
+              </div>
+            </ToastProvider>
           </ModalProvider>
         </FiltersProvider>
       </DreamsProvider>

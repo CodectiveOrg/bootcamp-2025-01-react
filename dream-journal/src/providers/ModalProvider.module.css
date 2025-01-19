@@ -10,7 +10,7 @@
   border-radius: 1rem;
 
   &::backdrop {
-    background-color: var(--color-backdrop);
-    backdrop-filter: blur(2px);
+    background-color: transparent;
+    /*backdrop-filter: blur(2px);*/
   }
 }

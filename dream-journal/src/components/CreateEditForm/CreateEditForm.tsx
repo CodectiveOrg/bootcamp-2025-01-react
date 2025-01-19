@@ -1,5 +1,7 @@
 import { FormEvent, useRef } from "react";
 
+import { toast } from "react-toastify";
+
 import { v4 as uuidv4 } from "uuid";
 
 import Button from "../Button/Button.tsx";
@@ -37,23 +39,33 @@ function CreateEditForm({ editingDream, onSubmit, onCancel }: Props) {
     const date = formData.get("date") as string;
     const vibe = formData.get("vibe") as Vibe;
 
+    const errors: string[] = [];
+
     if (!title) {
-      console.error("Title is required.");
-      return;
+      errors.push("Title is required.");
     }
 
     if (!content) {
-      console.error("Content is required.");
-      return;
+      errors.push("Content is required.");
     }
 
     if (!date) {
-      console.error("Date is required.");
-      return;
+      errors.push("Date is required.");
     }
 
     if (!vibe) {
-      console.error("Vibe is required.");
+      errors.push("Vibe is required.");
+    }
+
+    if (errors.length > 0) {
+      toast.error(
+        <div>
+          {errors.map((error) => (
+            <div key={error}>{error}</div>
+          ))}
+        </div>,
+      );
+
       return;
     }
 
