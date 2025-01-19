@@ -13,6 +13,7 @@ import { ModalContext } from "../../providers/ModalProvider.tsx";
 import { Dream } from "../../types/dream.ts";
 
 import styles from "./DreamsList.module.css";
+import { DreamsContext } from "../../providers/DreamsProvider.tsx";
 
 const formatter = new Intl.DateTimeFormat("en-CA", {
   year: "numeric",
@@ -21,11 +22,16 @@ const formatter = new Intl.DateTimeFormat("en-CA", {
 });
 
 function DreamsList() {
+  const { removeDream } = useContext(DreamsContext);
   const { filteredDreams } = useContext(FiltersContext);
   const { openModal } = useContext(ModalContext);
 
   const editButtonClickHandler = (dream: Dream): void => {
     openModal(dream);
+  };
+
+  const removeButtonClickHandler = (dream: Dream): void => {
+    removeDream(dream.id);
   };
 
   return (
@@ -48,7 +54,10 @@ function DreamsList() {
             >
               <MingcuteEdit2Line />
             </button>
-            <button className={styles.remove}>
+            <button
+              className={styles.remove}
+              onClick={() => removeButtonClickHandler(dream)}
+            >
               <MingcuteDelete2Line />
             </button>
           </div>
