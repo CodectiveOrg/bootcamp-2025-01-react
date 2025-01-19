@@ -72,7 +72,9 @@ function CreateEditForm({ editingDream, onSubmit, onCancel }: Props) {
 
   return (
     <form ref={formRef} className={styles.form} onSubmit={formSubmitHandler}>
-      <div className={styles.title}>New Dream</div>
+      <div className={styles.title}>
+        {editingDream ? "Edit Dream" : "New Dream"}
+      </div>
       <Input
         name="title"
         placeholder="Input your title..."
