@@ -1,0 +1,83 @@
+.items {
+  display: grid;
+  gap: 1rem;
+
+  inline-size: min(32.5rem, 100%);
+
+  margin-inline: auto;
+  padding-block: 1rem;
+
+  > li {
+    background-color: var(--color-surface-elevated);
+    box-shadow: var(--box-shadow);
+
+    display: grid;
+    grid-template-areas: "vibe title actions" "vibe date actions";
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    column-gap: 0.5rem;
+
+    padding: 0.5rem 1rem;
+
+    border-radius: 0.5rem;
+
+    .vibe {
+      grid-area: vibe;
+
+      min-block-size: 100%;
+      block-size: 0;
+
+      svg {
+        block-size: 100%;
+        inline-size: auto;
+      }
+    }
+
+    .title {
+      grid-area: title;
+
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .date {
+      grid-area: date;
+
+      font-family: monospace;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .actions {
+      grid-area: actions;
+
+      display: flex;
+      gap: 1rem;
+
+      button {
+        background-color: transparent;
+        color: var(--color-fade);
+
+        display: grid;
+        place-content: center;
+
+        border: none;
+
+        font-size: 1.25rem;
+
+        cursor: pointer;
+
+        &.edit {
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+
+        &.remove {
+          &:hover {
+            color: var(--color-danger);
+          }
+        }
+      }
+    }
+  }
+}

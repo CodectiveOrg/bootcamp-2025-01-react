@@ -1,28 +1,30 @@
-import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
+import { useContext } from "react";
 
 import Button from "../Button/Button.tsx";
-import Input from "../Input/Input.tsx";
+
+import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
+
+import { ModalContext } from "../../providers/ModalProvider.tsx";
 
 import styles from "./Footer.module.css";
 
 function Footer() {
+  const { openModal } = useContext(ModalContext);
+
+  const openButtonClickHandler = (): void => {
+    openModal();
+  };
+
   return (
     <footer className={styles.footer}>
-      <Button className={styles.button} shape="circle" sameWidthHeight>
+      <Button
+        className={styles.button}
+        shape="circle"
+        sameWidthHeight
+        onClick={openButtonClickHandler}
+      >
         <MingcuteAddLine />
       </Button>
-      <dialog>
-        <div className={styles.content}>
-          <div className={styles.title}>New Note</div>
-          <Input placeholder="Input your note..." />
-          <div className={styles.actions}>
-            <Button variant="outlined" size="small">
-              Cancel
-            </Button>
-            <Button size="small">Apply</Button>
-          </div>
-        </div>
-      </dialog>
     </footer>
   );
 }
